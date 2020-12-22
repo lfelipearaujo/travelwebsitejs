@@ -2,8 +2,8 @@
 //TODO hike page
 let slideScene;
 let pageScene;
-let detailScene;
 
+let detailScene;
 function animateSlides() {
   // Init Controller
   controller = new ScrollMagic.Controller();
@@ -42,11 +42,11 @@ function animateSlides() {
       reverse: false,
     })
       .setTween(sliderTl)
-      .addIndicators({
-        colorStart: "white",
-        colorTrigger: "white",
-        name: "slide",
-      })
+      // .addIndicators({
+      //   colorStart: "white",
+      //   colorTrigger: "white",
+      //   name: "slide",
+      // })
       .addTo(controller);
     // Create new animation
     const pageTl = gsap.timeline();
@@ -61,12 +61,12 @@ function animateSlides() {
       triggerHook: 0,
       duration: "100%",
     })
-      .addIndicators({
-        colorStart: "white",
-        colorTrigger: "white",
-        name: "page",
-        indent: 200,
-      })
+      // .addIndicators({
+      //   colorStart: "white",
+      //   colorTrigger: "white",
+      //   name: "page",
+      //   indent: 200,
+      // })
       .setPin(slide, { pushFollowers: false }) // make the content of the next page show up
       .setTween(pageTl)
       .addTo(controller);
@@ -137,8 +137,8 @@ function navToggle(e) {
 
 barba.init({
   views: [
+    //? with different views you can manipulate what happens in each page
     {
-      //? with different views you can manipulate what happens in each page
       namespace: "home",
       beforeEnter() {
         animateSlides();
@@ -155,7 +155,6 @@ barba.init({
         controller.destroy();
         detailScene.destroy();
       },
-
       beforeEnter() {
         detailAnimation();
       },
@@ -235,16 +234,14 @@ function detailAnimation() {
     })
       .setPin(slide, { pushFollowers: false })
       .setTween(slideTl)
-      .addIndicators({
-        colorStart: "white",
-        colorTrigger: "white",
-        name: "detailScene",
-      })
+      // .addIndicators({
+      //   colorStart: "white",
+      //   colorTrigger: "white",
+      //   name: "detailScene",
+      // })
       .addTo(controller);
   });
 }
-
-
 
 // ! Event listeners
 burger.addEventListener("click", navToggle);
